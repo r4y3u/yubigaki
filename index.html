@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Japanese Handwriting Pad</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./stroke-counts.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="app" aria-labelledby="app-title">
+      <h1 id="app-title" class="visually-hidden">手書き認識パッド</h1>
+
+      <section class="character-panel" aria-label="文字表示エリア">
+        <div class="mode-panel">
+          <label class="mode-label" for="slot-mode">文字枠</label>
+          <select id="slot-mode" class="mode-select" aria-label="文字枠数">
+            <option value="1" selected>１</option>
+            <option value="2">２</option>
+            <option value="3">３</option>
+            <option value="4">４</option>
+            <option value="free">フリー</option>
+          </select>
+        </div>
+
+        <output id="recognized-text" class="result-box" aria-live="polite">
+          準備中...
+        </output>
+      </section>
+
+      <canvas
+        id="handwriting-pad"
+        aria-label="手書き入力パッド"
+      ></canvas>
+
+      <div class="actions" aria-label="操作" data-slot-mode="slots">
+        <button
+          id="undo-button"
+          class="action-button undo-button"
+          type="button"
+          aria-keyshortcuts="Z"
+          disabled
+        >
+          戻る
+        </button>
+        <button id="clear-button" class="action-button clear-button" type="button">
+          クリア
+        </button>
+        <button
+          id="prev-slot-button"
+          class="action-button slot-nav-button prev-slot-button"
+          type="button"
+          aria-label="左の文字枠へ移動"
+          disabled
+        >
+          ◁
+        </button>
+        <button
+          id="next-slot-button"
+          class="action-button slot-nav-button next-slot-button"
+          type="button"
+          aria-label="右の文字枠へ移動"
+        >
+          ▷
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
